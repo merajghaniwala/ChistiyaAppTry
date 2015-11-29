@@ -9,6 +9,7 @@
   <script>
   	$(document).ready(function()
 	{
+		alert("Loaded");
 		var catid;
 		var start = 0;
 		var limit = 5;
@@ -28,7 +29,7 @@
 		}
 		
 		catid = getUrlParameter("catid");
-		
+		alert("fetch imgs");
 		$.post('http://tour.webbyinfotech.in/fetch.php',
 		{
 			catid:catid,
@@ -39,7 +40,9 @@
 		{
 			var newdata = document.getElementById("imgsul");
 			newdata.innerHTML = data;
+			alert("Fetched");
 		});
+		alert("Over");
 	});
   </script>
   <style>
