@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Products</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/common.min.css">
+  <link rel="stylesheet" href="css/circle-menu.min.css">
+  <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+  <script>
+  	$(document).ready(function()
+	{
+		var catid;
+		var start = 0;
+		var limit = 5;
+		
+		function getUrlParameter(sParam)
+		{
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++) 
+			{
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam) 
+				{
+					return sParameterName[1];
+				}
+			}
+		}
+		
+		catid = getUrlParameter("catid");
+		
+		$.post('http://tour.webbyinfotech.in/fetch.php',
+		{
+			catid:catid,
+			from:start,
+			to:limit
+		},
+		function(data)
+		{
+			var newdata = document.getElementById("imgsul");
+			newdata.innerHTML = data;
+		});
+	});
+  </script>
+  <style>
+  	#list
+	{
+		width:100%;
+	}
+	#imgsul
+	{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+	
+	#imgsul li
+	{
+		float: left;
+		display:inline;
+		margin-left:2.5%;
+		padding: 0;
+		overflow: hidden;
+		width:45%;
+	}
+	
+	.pro
+	{
+		width:100%;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;		
+	}
+  </style>
+</head>
+<body>
+
+<div id="list">
+	<ul id="imgsul" style="list-style:none;">
+		
+	</ul>
+</div>
+
+<nav id="c-circle-nav" class="c-circle-nav">
+  <button id="c-circle-nav__toggle" class="c-circle-nav__toggle">
+    <span>Toggle</span>
+  </button>
+  <ul class="c-circle-nav__items">
+    <li class="c-circle-nav__item">
+      <a href="pro.html?catid=1" class="c-circle-nav__link">
+        <img src="img/sari.png" alt="">
+      </a>
+    </li>
+    <li class="c-circle-nav__item">
+      <a href="pro.html?catid=2" class="c-circle-nav__link">
+        <img src="img/suit.png" alt="">
+      </a>
+    </li>
+    
+    <li class="c-circle-nav__item">
+      <a href="index.html" class="c-circle-nav__link">
+        <img src="img/house.svg" alt="">
+      </a>
+    </li>
+    <li class="c-circle-nav__item">
+      <a href="pro.html?catid=3" class="c-circle-nav__link">
+        <img src="img/kurta.png" alt="">
+      </a>
+    </li>
+	<li class="c-circle-nav__item">
+      <a href="pro.html?catid=4" class="c-circle-nav__link">
+        <img src="img/lace.png" alt="">
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<script src="js/circleMenu.min.js"></script>
+</body>
+</html>
