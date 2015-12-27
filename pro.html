@@ -29,6 +29,7 @@
 		
 		catid = getUrlParameter("catid");
 		alert("fetch catid = "+catid);
+		/*
 		$.get('http://tour.webbyinfotech.in/fetch.php',
 		{
 			catid:catid,
@@ -40,6 +41,21 @@
 			var newdata = document.getElementById("imgsul");
 			newdata.innerHTML = data;
 		});
+		*/
+		$.ajax(
+		{
+			url: "http://tour.webbyinfotech.in/fetch.php",
+			data: {
+				catid:catid,
+				from:start,
+				to:limit	
+			}
+			success: function(result)
+			{
+        			alert(result);
+    			}
+		});
+		
 		alert("over");
 	});
   </script>
