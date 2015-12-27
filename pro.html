@@ -54,9 +54,13 @@
 			{
         			alert(result);
     			},
-    			error: function()
+    			error: function(xhr, status, error)
     			{
-			 	alert('An error has occurred');
+    				var err = eval("(" + xhr.responseText + ")");
+				// Display the specific error raised by the server (e.g. not a
+				//   valid value for Int32, or attempted to divide by zero).
+				alert(err.Message);
+				alert('An error has occurred');
 			},
 		});
 		
