@@ -53,7 +53,11 @@
 			success: function(result)
 			{
         			alert(result);
-    			}
+    			},
+    			error: function()
+    			{
+			 	alert('An error has occurred');
+			},
 		});
 		
 		alert("over");
